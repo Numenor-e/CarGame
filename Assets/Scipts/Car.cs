@@ -7,6 +7,8 @@ public class Car : MonoBehaviour
     public int Hiz=1;
     bool Hizlandi=false;
     GameObject gameManager;
+    bool Gecti = false;
+    public List<GameObject> Lastik;
 
     private void Start()
     {
@@ -16,6 +18,10 @@ public class Car : MonoBehaviour
     void Update()
     {
         transform.Translate(0,0,1*Hiz*Time.deltaTime);
+        foreach(GameObject Teker in Lastik)
+        {
+            Teker.transform.Rotate(0.2f*Hiz,0,0);
+        }
     }
 
     private void OnMouseDown()
@@ -33,10 +39,26 @@ public class Car : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "Merkez")
+        {
+            Gecti = true;
+        }
+        if(other.tag == "Cikis")
+        {
+            Hiz=Hiz / 3;
+            gameManager.GetComponent<GameManager>().Skor++;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Car")
-        gameManager.GetComponent<GameManager>().isDead = true;
+        if (Gecti == false)
+        {
+            if (other.tag == "Car")
+                gameManager.GetComponent<GameManager>().isDead = true;
+        }
     }
 
 }

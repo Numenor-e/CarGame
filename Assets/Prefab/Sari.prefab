@@ -358,6 +358,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hiz: 5
+  Lastik:
+  - {fileID: 4541997851480008046}
+  - {fileID: 7633947752635234473}
+  - {fileID: 1230667551858201977}
+  - {fileID: 6618950920214677112}
 --- !u!65 &6723520313420365413
 BoxCollider:
   m_ObjectHideFlags: 0
