@@ -49,6 +49,8 @@ public class Car : MonoBehaviour
         {
             Hiz=Hiz / 3;
             gameManager.GetComponent<GameManager>().Skor++;
+            gameManager.GetComponent<GameManager>().Cagir();
+
         }
     }
 
@@ -57,7 +59,9 @@ public class Car : MonoBehaviour
         if (Gecti == false)
         {
             if (other.tag == "Car")
+            {
                 gameManager.GetComponent<GameManager>().isDead = true;
+            }
         }
     }
 

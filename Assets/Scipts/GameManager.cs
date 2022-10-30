@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("Skor"))
         {
-            EnYuksekSkor = PlayerPrefs.GetInt("Skor");
+            EnYuksekSkor = PlayerPrefs.GetInt("Skor")+1;
         }
     }
     private void Update()
@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
             Panel.SetActive(true);
             Time.timeScale = 0;
         }
-        PlayerPrefs.SetInt("Skor", EnYuksekSkor);
 
         SkorText.text = "Skor : " + Skor.ToString();
         EnYuksek.text = "En Yuksek Skor : " + EnYuksekSkor.ToString();
@@ -56,5 +55,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
         isDead = false;
+    }
+    public void Cagir()
+    {
+                PlayerPrefs.SetInt("Skor", EnYuksekSkor);
+
     }
 }
